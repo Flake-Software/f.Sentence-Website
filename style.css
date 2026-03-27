@@ -1,36 +1,14 @@
-/* f.Sentence - Material You Style (M3) */
 :root {
-    /* M3 Tonal Palette - Default Blue Theme */
+    /* Živahnija M3 Paleta */
     --md-sys-color-primary: #0061A4;
-    --md-sys-color-on-primary: #FFFFFF;
     --md-sys-color-primary-container: #D3E4FF;
-    --md-sys-color-on-primary-container: #001C38;
-    
-    --md-sys-color-secondary: #535F70;
-    --md-sys-color-on-secondary: #FFFFFF;
-    --md-sys-color-secondary-container: #D7E3F7;
-    --md-sys-color-on-secondary-container: #101C2B;
-    
-    --md-sys-color-tertiary: #725573;
-    --md-sys-color-on-tertiary: #FFFFFF;
-    --md-sys-color-tertiary-container: #FDD7FB;
-    --md-sys-color-on-tertiary-container: #2A132C;
-    
-    --md-sys-color-background: #F8F9FF; /* Very light surface */
-    --md-sys-color-on-background: #191C20;
-    
-    --md-sys-color-surface: #F8F9FF;
-    --md-sys-color-on-surface: #191C20;
-    --md-sys-color-surface-variant: #DFE2EB;
-    --md-sys-color-on-surface-variant: #43474E;
-    
-    --md-sys-color-outline: #73777F;
+    --bg-gradient: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+    --glass-bg: rgba(255, 255, 255, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.6);
     
     /* M3 Corner Radius */
     --md-sys-corner-full: 1000px;
-    --md-sys-corner-extra-large: 28px;
-    --md-sys-corner-large: 16px;
-    --md-sys-corner-medium: 12px;
+    --md-sys-corner-extra-large: 32px;
 }
 
 * {
@@ -40,160 +18,163 @@
 body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
-    font-weight: 400;
-    background-color: var(--md-sys-color-background);
-    color: var(--md-sys-color-on-background);
+    background: var(--bg-gradient);
+    background-attachment: fixed;
+    color: #1a1c20;
     -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
 }
 
 /* --- HEADER --- */
 .m3-header {
-    padding: 64px 24px;
+    padding: 100px 24px;
     text-align: center;
-    background: radial-gradient(circle at top right, #e8f0fe, transparent),
-                radial-gradient(circle at bottom left, #f6faff, var(--md-sys-color-surface));
-    border-bottom: 1px solid var(--md-sys-color-surface-variant);
+    /* Suptilni sjaj na vrhu */
+    background: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.5) 0%, transparent 70%);
 }
 
 .brand-container {
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    margin-bottom: 48px;
+    margin-bottom: 40px;
+    padding: 8px 16px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--md-sys-corner-full);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
 .brand-logo {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 900; /* Extra heavy weight */
-    font-size: 2rem;
+    font-weight: 900;
+    font-size: 1.8rem;
     color: var(--md-sys-color-primary);
     letter-spacing: -1px;
+    /* Blagi odsjaj na tekstu */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .m3-badge {
-    background-color: var(--md-sys-color-primary-container);
-    color: var(--md-sys-color-on-primary-container);
+    background: var(--md-sys-color-primary);
+    color: white;
     padding: 4px 12px;
     border-radius: var(--md-sys-corner-full);
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 700;
+    text-transform: uppercase;
 }
 
 .hero-title {
     font-weight: 900;
-    font-size: 4rem; /* Prominent headline */
-    margin: 0 0 16px;
+    font-size: clamp(3rem, 10vw, 5rem); /* Responzivna veličina */
+    margin: 0 0 20px;
     letter-spacing: -2px;
-    line-height: 1.1;
+    line-height: 1;
+    background: linear-gradient(to bottom, #001c38, #0061a4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .hero-subtitle {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 300;
-    margin-bottom: 40px;
-    max-width: 600px;
+    margin-bottom: 48px;
+    max-width: 700px;
     margin-left: auto;
     margin-right: auto;
-    color: var(--md-sys-color-on-surface-variant);
+    color: #43474e;
 }
 
 /* --- BUTTONS --- */
 .m3-actions {
     display: flex;
     justify-content: center;
-    gap: 16px;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 .m3-button {
-    padding: 18px 36px;
-    border-radius: var(--md-sys-corner-full); /* Complete pills */
+    padding: 20px 40px;
+    border-radius: var(--md-sys-corner-full);
     font-weight: 700;
-    font-size: 1rem;
+    font-size: 1.1rem;
     cursor: pointer;
-    border: none;
-    transition: box-shadow 0.2s, transform 0.2s, background-color 0.2s;
+    border: 1px solid transparent;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     text-decoration: none;
-    display: inline-block;
 }
 
 .m3-button-filled {
-    background-color: var(--md-sys-color-primary);
-    color: var(--md-sys-color-on-primary);
+    background: linear-gradient(180deg, #0078d4 0%, #0061a4 100%);
+    color: white;
+    box-shadow: 0 8px 20px rgba(0, 97, 164, 0.3);
 }
 
 .m3-button-tonal {
-    background-color: var(--md-sys-color-secondary-container);
-    color: var(--md-sys-color-on-secondary-container);
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    color: #001c38;
+    border: 1px solid var(--glass-border);
 }
 
 .m3-button:hover {
-    box-shadow: 0 4px 16px rgba(0,0,0,0.15); /* M3 elevation hover state */
-    transform: translateY(-2px);
-}
-
-.m3-button:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transform: scale(1.05);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
 }
 
 /* --- MAIN CONTENT --- */
 .m3-main {
-    padding: 64px 24px;
+    padding: 40px 24px 100px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .m3-feature-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 32px;
 }
 
 .m3-card {
-    background: white;
-    padding: 40px;
-    border-radius: var(--md-sys-corner-extra-large); /* Very rounded M3 cards */
-    transition: box-shadow 0.3s, transform 0.3s;
-}
-
-.m3-card-elevated {
-    border: 1px solid var(--md-sys-color-surface-variant);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    padding: 48px;
+    border-radius: var(--md-sys-corner-extra-large);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: all 0.4s ease;
 }
 
 .m3-card:hover {
-    box-shadow: 0 8px 32px rgba(0,0,0,0.08); /* Modern elevation */
+    background: rgba(255, 255, 255, 0.6);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
 
 .card-icon {
-    font-size: 2rem;
-    color: var(--md-sys-color-primary);
+    font-size: 2.5rem;
     margin-bottom: 24px;
+    display: block;
+    /* Aero stil: ikone sa blagim drop-shadow */
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
 }
 
 .m3-card h3 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 700;
-    margin-top: 0;
-    margin-bottom: 8px;
-}
-
-.m3-card p {
-    color: var(--md-sys-color-on-surface-variant);
-    margin: 0;
+    margin-bottom: 12px;
 }
 
 /* --- FOOTER --- */
 .m3-footer {
     text-align: center;
-    padding: 32px;
-    border-top: 1px solid var(--md-sys-color-surface-variant);
-    font-size: 0.9rem;
-    color: var(--md-sys-color-on-surface-variant);
+    padding: 60px 24px;
+    color: #43474e;
 }
 
 .m3-footer a {
     color: var(--md-sys-color-primary);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 700;
 }
